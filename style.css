@@ -4,8 +4,34 @@
     padding: 0;
 }
 
+
 body {
     font-family: 'Gothic A1', sans-serif;
+	font-size: 16px;
+  }
+  
+@media only screen and (max-width: 767px) {
+body {
+	font-size: 14px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+body {
+	font-size: 16px;
+}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+body {
+	font-size: 18px;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+body {
+	font-size: 20px;
+}
 }
 
 header {
@@ -19,8 +45,13 @@ header {
     padding: 20px;
 	text-align: center;
 	align-items: center;
+	z-index: 2;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+  }
 
 .container {
     max-width: 70vw;
@@ -47,18 +78,25 @@ header {
 }
 
 #about {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 	text-align: center;
 }
 
+#myimg{
+	max-width:40%;
+	height: auto;
+	border-radius: 30px;
+}
+
 .flexy{
-	display: grid;
-    max-width: 100vw;
+    max-width: 80vw;
 	height: 50%;
+	display:flex;
+	flex-flow: column wrap;
 	align-items: center;
-	column-gap: 40px;
 	text-align: justify;
-	grid-template-columns: repeat(2, 1fr);
 
 }
 
@@ -109,7 +147,7 @@ margin-bottom: 30px;
 }
 
 .card {
-border: 1px solid #ccc;
+border: 0px solid #ccc;
 padding: 20px;
 margin: 20px;
 margin-bottom: 20px;
@@ -189,11 +227,34 @@ padding: 20px;
 	color: black;
   }
   
-  @keyframes colourchange {
-	0% {background-color: rgb(0, 174, 255);}
-	25%{background-color:rgb(0, 60, 255);}
-	75%{background-color:rgb(176, 92, 245);}
-	100%{background-color:rgb(0, 174, 255);}
+h1 {
+	overflow: hidden;
+	border-right: .15em solid orange;
+	white-space: nowrap; 
+	margin: 0 auto;
+	letter-spacing: .2em;
+	animation: 
+	  typing 2s steps(40, end),
+	  blink-caret .75s step-end infinite;
+  }
+  
+
+@keyframes colourchange {
+0% {background-color: rgb(0, 174, 255);}
+25%{background-color:rgb(0, 60, 255);}
+75%{background-color:rgb(176, 92, 245);}
+100%{background-color:rgb(0, 174, 255);}
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: orange; }
   }
 
 /*
