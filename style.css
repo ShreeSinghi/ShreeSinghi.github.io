@@ -53,6 +53,10 @@ a {
 	color: black;
   }
 
+.flip-a{
+	font-weight: bold;
+}
+
 .container {
     max-width: 70vw;
 	margin: 0 auto;
