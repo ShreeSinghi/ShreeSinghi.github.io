@@ -1,24 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Sliding Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Sofia:300,400,600,700&amp;lang=en" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+			<br>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="about">
+			<h2>About Me</h2>
+            <div class="flexy">
+                <p>Dominick “Dom” Cobb and Arthur are “extractors”: they perform corporate espionage using experimental military technology to infiltrate their targets’ subconscious and extract information through a shared dream world. Their latest target, Saito, reveals he arranged their mission to test Cobb for a seemingly impossible job: implanting an idea in a person’s subconscious, or “inception”. Saito wants Cobb to convince Robert, the son of Saito’s ailing competitor Maurice Fischer, to dissolve his father’s company. In return, Saito promises to clear Cobb’s criminal status, which prevents him from returning home to his children.
 
-	<div class="container">
-		<input type="checkbox" id="box1">
-		<label for="box1" class="top-left">Box 1</label>
-		<input type="checkbox" id="box2">
-		<label for="box2" class="top-right">Box 2</label>
-		<input type="checkbox" id="box3">
-		<label for="box3" class="bottom-left">Box 3</label>
-		<input type="checkbox" id="box4">
-		<label for="box4" class="bottom-right">Box 4</label>
-	  </div>
-	  
+					Cobb accepts the offer and assembles his team: Eames, an identity forger; Yusuf, a chemist with a sedative for the “dream within a dream” strategy; and Ariadne, an architecture student tasked with designing the dream’s labyrinth, recruited through Cobb’s father-in-law, Professor Stephen Miles. Ariadne discovers that Cobb’s subconscious houses an invasive projection of his late wife, Mal. After Maurice dies, Robert accompanies the body on a ten-hour flight, where the team, including Saito, sedate him into a shared dream. At each dream level, the person generating the dream stays behind to set up a “kick” to awaken the other team members from the deeper dream, coordinated by the playing of song “Non, je ne regrette rien” as an auditory cue; these kicks must occur simultaneously, despite time flowing faster in each successive level.
+				</p>
+				<img src="me.jpg">
+			</div>
 
+
+
+        </section>
+        <section id="projects">
+			<h2>My Projects</h2>
+            <div class="cards">
+				<div class="flip">
+					<div class="flip-inner">
+						<div class="flip-front">
+							<img src="stocks.png">
+						</div>
+						<div class="flip-back">
+							<h1>Stock model</h1>
+							<p>Predicting index trends using DL</p>
+							<p>(in Python again ofc)</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="flip">
+					<div class="flip-inner">
+						<div class="flip-front">
+						<img src="space.png">
+						</div>
+						<div class="flip-back">
+						<h1>Space Wars</h1>
+						<p>A game made on Tkinter Python3</p>
+						<p>Retro-style!</p>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+		<h2>contact me</h2>
+        <div class="contact">
+			<div class="card">
+				<h3>email</h3>
+				<p>singhishree@gmail.com</p>
+			</div>
+			<div class="card">
+				<h3>discord</h3>
+				<p>backSlash#1759</p>
+			</div>
+        </div>
+    </main>
 </body>
 </html>
