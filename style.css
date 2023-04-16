@@ -1,0 +1,149 @@
+#background {
+	background-image: url("ai.png");
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	background-attachment: fixed;
+	z-index:1;
+	overflow: hidden;
+}
+
+body, html {
+	height: 100vh;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	transition: transform 0.5s ease;
+	z-index: 2;
+	position: fixed;
+}
+
+#centerpage {
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 153, 255, 0.452);
+}
+
+#rightpage {
+	background-color: rgba(98, 0, 255, 0.5);
+	top: 0;
+	left: 100%;
+}
+
+#background:target #centerpage, #background:target #rightpage  {
+	transform: translateX(-100%);
+}
+
+/* 
+#rightpage:target ~ #rightpage{
+	transform: translateX(-100%);
+} */
+
+.slide-button {
+	margin-top: 30px;
+	padding: 10px 20px;
+	position: absolute;
+	transform: rotate(-90deg);
+
+	right: 0vw;
+
+	background-color: #d200d9af;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+
+.slide-button:hover {
+	background-color: #0063B1;
+}
+
+.slide-button:active {
+	background-color: #005291;
+}
+
+/* 
+#background {
+	background-image: url("ai.png");
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	background-attachment: fixed;
+	z-index:1;
+	overflow: hidden;
+}
+
+body, html {
+	height: 100vh;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	transition: transform 0.5s ease;
+}
+
+
+#centerpage {
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 153, 255, 0.5);
+}
+
+#rightpage {
+	background-color: rgba(81, 255, 0, 0.5);
+	top: 0;
+	left: 100%;
+}
+
+#rightpage:target {
+	transform: translateX(-100%);
+}
+#rightpage:target ~ #centerpage{
+	transform: translateX(-100%);
+}
+
+.slide-button {
+	margin-top: 30px;
+	padding: 10px 20px;
+	position: absolute;
+
+	background-color: #d200d9af;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+#rightbutton {
+	transform: rotate(-90deg);
+	right: 0vw;
+}
+
+#leftbutton {
+	transform: rotate(90deg);
+	left: 0vw;
+}
+
+.slide-button:hover {
+	background-color: #0063B1;
+}
+
+.slide-button:active {
+	background-color: #005291;
+}
+
+*/
