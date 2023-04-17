@@ -7,30 +7,29 @@
 
 body {
     font-family: 'Gothic A1', sans-serif;
-	font-size: 16px;
   }
   
 @media only screen and (max-width: 767px) {
 body {
-	font-size: 14px;
+	font-size: 0.6rem;
 }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 body {
-	font-size: 16px;
+	font-size: 1rem;
 }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 body {
-	font-size: 18px;
+	font-size: 1.1rem;
 }
 }
 
 @media only screen and (min-width: 1200px) {
 body {
-	font-size: 20px;
+	font-size: 1.2rem;
 }
 }
 
@@ -42,7 +41,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 	text-align: center;
 	align-items: center;
 	z-index: 2;
@@ -50,15 +49,16 @@ header {
 
 a {
 	text-decoration: none;
-	color: black;
   }
 
-.flip-a{
+.flip a{
+	color: rgb(255, 255, 255);
 	font-weight: bold;
+	
 }
 
 .container {
-    max-width: 70vw;
+    max-width: 80vw;
 	margin: 0 auto;
 	padding: 0 20px;
 }
@@ -260,7 +260,3 @@ h1 {
 	from, to { border-color: transparent }
 	50% { border-color: orange; }
   }
-
-/*
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-*/
