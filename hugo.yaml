@@ -1,0 +1,233 @@
+baseURL: "https://hugo-profile.netlify.app"
+languageCode: "en-us"
+title: "Shree Singhi — Resume"
+theme: hugo-profile
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+enableRobotsTXT: true
+
+pagination:
+  pagerSize: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  title: "Shree Singhi"
+  description: "Researcher in Machine Learning and Computer Vision — B.Tech Student at IIT Roorkee."
+  favicon: "/fav.png"
+
+  useBootstrapCDN: false
+  mathjax: false
+  animate: true
+
+  font:
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
+    textAlign: left
+
+  navbar:
+    align: ms-auto
+    brandName: "Shree Singhi"
+    disableSearch: true
+    stickyNavBar:
+      enable : true
+      showOnScrollUp : true
+    enableSeparator: false
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableProjects: false
+      disableAchievements: false
+      disableContact: false
+
+  # Hero section (top of page)
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Shree Singhi"
+    subtitle: "Researcher — Machine Learning & Computer Vision"
+    content: "Undergrad researcher at IIT Roorkee. I work on Geometry Processing, XAI, Adversarial ML and Generative Models."
+    image: /images/camera.jpg
+    imageCaption: amateur photography at NeurIPS
+    bottomImage:
+      enable: false
+    button:
+      enable: true
+      name: "Download Resume"
+      url: "/files/Shree_Singhi_Resume.pdf"
+      download: true
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/ShreeSinghi
+        - icon: fab fa-linkedin
+          url: https://linkedin.com/in/shree-s-7ab143136
+        - icon: fab fa-x-twitter
+          url: https://x.com/ShreeSinghi
+        - icon: fas fa-graduation-cap
+          url: https://scholar.google.com/citations?user=xCMGlgwAAAAJ&hl=en
+        - icon: fa fa-envelope
+          url: "mailto:singhishree@gmail.com"
+
+  # About
+  about:
+    enable: true
+    title: "About Me"
+    image: "/images/icecream.jpg"
+    imageCaption: enjoying some icecream
+    content: |-
+      I'm a Senior at IIT Roorkee, pursuing a Bachelor's in Data Science and AI. I am experienced in Computer Vision, XAI, Geometry Processing, Adversarial ML and eating icecream. I lead the <a href="https://dsgiitr.in/">Data Science Group</a>, IITR's student-run ML community, as Secretary. We build projects, publish research, and organize lectures, workshops, and hackathons to drive AI on campus.
+      
+      Outside of academics, you'll usually find me on a squash court, out for a run, or scouting for my next ice cream 🍨 or boba fix 🧋.
+    skills:
+      enable: false
+      title: "Skills"
+      items:
+        - "Python"
+        - "C++"
+        - "Go"
+        - "JavaScript"
+        - "SQL"
+  news:
+    enable: true
+    title: "Latest News"
+    items:
+      - date: "July 2025"
+        content: "Started my Research Fellowship at MIT!"
+        
+      - date: "July 2025" 
+        content: "Our paper 'DINOHash: Learning Adversarially Robust Perceptual Hashes' got accepted at the ICML '25 CODEML Workshop!"
+        
+      - date: "December 2024"
+        content: "Presented 'Riemann Sum Optimization for Accurate Integrated Gradients Computation' at NeurIPS '24 IAI Workshop."
+
+  # Experience (work & research)
+  experience:
+    enable: true
+    items:
+      - job: "Research Fellow — SGI"
+        company: "Massachusetts Institute of Technology"
+        companyUrl: "https://sgi.mit.edu/"
+        date: "Jul 2025 — Aug 2025"
+        content: "I built new solvers for heat diffusion on discrete meshes in the log domain with <a href='https://people.csail.mit.edu/jsolomon/'>Prof. Justin Solomon</a>. I worked on latent-space optimization for DeepSDFs with <a href='https://www.cs.mcgill.ca/~kry/'>Paul Kry</a>. I also worked on Grid-Free Fluid Solvers using Implicit Representations with <a href='https://ishit.github.io/'>Ishit Mehta</a> and <a href='https://sinabiz.github.io/'>Sina Nabizadeh</a>. This fellowship was actually my first experience with geometry processing but it definitely won't be the last!"
+
+      - job: "Summer Intern"
+        company: "KLA"
+        companyUrl: "https://www.kla.com/"
+        date: "May 2025 — Jul 2025"
+        content: "Optimized the YOLO training pipeline for semiconductor defect detection, implemented deterministic augmentation buffer and a bunch of new augmentations to improve mAP and training speed."
+
+      - job: "ML Researcher (funded by Zellic)"
+        company: "Proteus"
+        companyUrl: "https://proteus.photos/"
+        date: "Jun 2024 — Feb 2024"
+        content: "Worked on robust perceptual hashing, adversarial training, and segmentation for AI-generated content provenance; eventually leading to a paper at the ICML `25 CODEML workshop."
+
+      - job: "Software Engineering Intern"
+        company: "Uber"
+        companyUrl: "https://www.uber.com/"
+        date: "May 2024 — Jun 2024"
+        content: "Built Go backend services and Kafka-based event streams for data-science experiment notifications."
+
+  publications:
+    enable: true
+    items:
+      - title: "DINOHash: Learning Adversarially Robust Perceptual Hashes from Self-Supervised Features"
+        venue: "ICML 2025 — CODEML Workshop"
+        image: /images/projects/proteus.png
+        url: "https://openreview.net/pdf?id=HrGa8Mq2NE"
+        date: "Jul 2025"
+        summary: "Adversarially robust perceptual hashing using self-supervised features; open-sourced model and attack tooling."
+
+      - title: "Riemann Sum Optimization for Accurate Integrated Gradients Computation"
+        venue: "NeurIPS 2024 — IAI Workshop"
+        image: /images/projects/riemannopt.png
+        url: "https://arxiv.org/abs/2410.04118"
+        date: "Oct 2024"
+        summary: "RiemannOpt: optimizing sample points for Integrated Gradients to reduce computation while preserving attribution quality."
+
+      - title: "Strengthening Interpretability: An Investigative Study of Integrated Gradient Methods"
+        venue: "TMLR 2024"
+        image: /images/projects/idgi.jpg
+        url: "https://arxiv.org/abs/2409.09043"
+        date: "Dec 2024"
+        summary: "Reproducibility study correcting and analyzing the IDGI framework - experimentally and theoretically."
+
+  # Projects
+  projects:
+      enable: true
+      items:
+        - title: "DevRev — AI Agent 007 (Inter-IIT Tech Meet 12.0)"
+          content: "Tooling to generate specialized API calls from natural-language prompts; modified Reflexion and Retriever integration."
+          image: /images/projects/devrev.jpg
+          badges:
+            - "LLMs"
+            - "RAG"
+            - "Agentic AI"
+          links:
+            - icon: fab fa-github
+              url: https://github.com/Sar2580P/Dev-Rev-Inter-IIT
+
+        - title: "Low-Light Image Enhancement"
+          content: "Developed a quantile regression model using XGBoost to create histogram mapping from low-light to high-light images. Achieved improved image quality with vision transformers, increasing mean PSNR on the test set by 3.2."
+          image: /images/projects/lowlight.png
+          badges:
+            - "XGBoost"
+            - "Vision Transformers"
+            - "Computer Vision"
+          links:
+            - icon: fab fa-github
+              url: https://github.com/ShreeSinghi/Low-Light-Enhancement
+
+        - title: "CanvArt"
+          content: "Real-time video streaming application using Python sockets with tile-based image compression. Utilized KD Trees and hash tables for matching visually similar images in O(log n) complexity."
+          image: /images/projects/canvart.png
+          badges:
+            - "Web Sockets"
+            - "Data Structures"
+          links:
+            - icon: fab fa-github
+              url: https://github.com/ShreeSinghi/CanvArt
+
+
+  # Contact
+  contact:
+    enable: true
+    content: "My inbox is always open — singhishree@gmail.com. I don't check twitter too often, however, you can reach out to me on LinkedIn. I love connecting with people, so feel free to say hi!"
+
+  footer:
+    # recentPosts:
+    #   path: "blogs"
+    #   count: 3
+    #   title: Recent Posts
+    #   enable: true
+    #   disableFeaturedImage: false
+    socialNetworks:
+      github: https://github.com/ShreeSinghi
+      linkedin: https://linkedin.com/in/shree-s-7ab143136
+      twitter: https://x.com/ShreeSinghi
+
+  terms:
+    read: "Read"
+    toc: "Table Of Contents"
+    copyright: "All rights reserved"
+    pageNotFound: "Page not found"
+    emailText: "Check out this site"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
