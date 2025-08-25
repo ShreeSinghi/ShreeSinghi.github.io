@@ -1,0 +1,58 @@
+{{ if .Site.Params.news.enable }}
+<section id="news" class="container-fluid py-4">
+    <div class="container">
+        <h2 class="text-center mb-3">{{ .Site.Params.news.title }}</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="news-scroll-container" style="
+                    max-height: 300px; 
+                    overflow-y: auto; 
+                    border: 1px solid #e0e0e0; 
+                    border-radius: 8px; 
+                    padding: 1rem; 
+                    background-color: #fafafa;
+                    scrollbar-width: thin;
+                    scrollbar-color: #ccc #f9f9f9;
+                ">
+                    <ul class="list-unstyled mb-0">
+                        {{ range .Site.Params.news.items }}
+                        <li class="d-flex align-items-start mb-2 pb-2" style="border-bottom: 1px solid #eee;">
+                            <span class="me-2 mt-1" style="color: #007bff;">•</span>
+                            <div class="flex-grow-1">
+                                <small class="text-muted d-block mb-1" style="font-weight: 500;">{{ .date }}</small>
+                                <span style="font-size: 0.95rem; line-height: 1.4;">{{ .content | markdownify }}</span>
+                            </div>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+.news-scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+.news-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+.news-scroll-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+.news-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Remove bottom border from last item */
+.news-scroll-container ul li:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+</style>
+{{ end }}
