@@ -3,6 +3,10 @@ languageCode: "en-us"
 title: "Shree Singhi — Resume"
 theme: hugo-profile
 
+caches:
+  images:
+    dir: :cacheDir/images
+    
 outputs:
   home:
     - "HTML"
