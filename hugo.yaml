@@ -71,7 +71,7 @@ params:
     button:
       enable: true
       name: "Download Resume"
-      url: "/files/Shree_Singhi_Resume.pdf"
+      url: "https://drive.usercontent.google.com/download?id=1Dl_niFogkELoN0xIWqbb5-BMrV4gORkC&export=download&"
       download: true
       newPage: false
     socialLinks:
