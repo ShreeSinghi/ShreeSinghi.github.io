@@ -1,4 +1,4 @@
-baseURL: 'https://shreesinghi.github.io/shree/'
+baseURL: "https://shreesinghi.github.io/shree"
 languageCode: "en-us"
 title: "Shree Singhi — Resume"
 theme: hugo-profile
