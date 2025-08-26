@@ -70,7 +70,7 @@ params:
       enable: false
     button:
       enable: true
-      name: "Download Resume"
+      name: "Resume"
       url: "https://drive.usercontent.google.com/download?id=1Dl_niFogkELoN0xIWqbb5-BMrV4gORkC&export=download&"
       download: true
       newPage: false
