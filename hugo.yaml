@@ -1,4 +1,5 @@
 baseURL: "https://shreesinghi.github.io/shree"
+canonifyURLs : true
 languageCode: "en-us"
 title: "Shree Singhi — Resume"
 theme: hugo-profile
