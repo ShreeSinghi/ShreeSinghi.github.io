@@ -43,6 +43,7 @@ params:
     textAlign: left
 
   navbar:
+    showBrandLogo: false
     align: ms-auto
     brandName: "Shree Singhi"
     disableSearch: true
