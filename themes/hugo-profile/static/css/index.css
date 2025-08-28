@@ -267,7 +267,7 @@ header .navbar.animate {
 }
 
 #experience * {
-    background-color: transparent !important;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #experience .tab-pane > * {

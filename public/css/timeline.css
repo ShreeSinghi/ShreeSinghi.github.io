@@ -1,3 +1,9 @@
+:root {
+    --primary-color: #007bff;      /* Example: bright blue */
+    --background-color: #ffffff;  /* Example: white */
+}
+
+
 .timeline-container {
     position: relative;
     padding: 2rem 0;
@@ -48,20 +54,22 @@
     width: 20px;
     height: 20px;
     border-radius: 100%;
+    background-color: var(--primary-color) !important;
+
     border: 4px solid var(--background-color);
     box-shadow: 0 0 0 3px var(--primary-color);
-    background-color: var(--primary-color);
     z-index: 10;
     top: 1.5rem;
 }
 
+
 /* Position dots centered on the timeline line */
 .timeline-item:nth-child(odd) .timeline-dot {
-    right: calc(-2rem - 10px); /* Half width of container gap + half dot width */
+    right: calc(-2rem - 10px); /* Distance to center line (2rem gap) + half dot width (10px) */
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-    left: calc(-2rem - 10px); /* Half width of container gap + half dot width */
+    left: calc(-2rem - 10px); /* Distance to center line (2rem gap) + half dot width (10px) */
 }
 
 /* Animation delays */
@@ -236,7 +244,7 @@
     }
 
     .timeline-dot {
-        left: calc(-1rem - 10px) !important; /* Centered on mobile line position */
+        left: calc(-1rem - 10px) !important; /* Line at 1rem, item at 2rem, so go back (2rem - 1rem) + 10px = 1rem + 10px */
         right: auto !important;
     }
 
@@ -276,7 +284,7 @@
     }
 
     .timeline-dot {
-        left: calc(-0.75rem - 8px) !important; /* Adjusted for smaller dot and line position */
+        left: calc(-0.75rem - 8px) !important; /* Line at 0.75rem, item at 1.5rem, so go back (1.5rem - 0.75rem) + 8px = 0.75rem + 8px */
         width: 16px;
         height: 16px;
     }
