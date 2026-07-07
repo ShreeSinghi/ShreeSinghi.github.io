@@ -128,6 +128,18 @@ params:
   experience:
     enable: true
     items:
+      - job: "ML Engineer"
+        company: "Drafted"
+        companyUrl: "https://drafted.ai/"
+        date: "July 2026 — Present"
+        content: "Building custom diffusion models to architect a variety of floorplans based on customer requirements."
+        
+      - job: "AI Engineer Intern"
+        company: "AlphaSense"
+        companyUrl: "https://www.alpha-sense.com/"
+        date: "Dec 2025 — Feb 2025"
+        content: "Worked on Office plugins deploying AI Agents and tools for large finance corporations such as JPMorgan and Goldman Sachs."
+
       - job: "Research Fellow — SGI"
         company: "Massachusetts Institute of Technology"
         companyUrl: "https://sgi.mit.edu/"
@@ -138,7 +150,7 @@ params:
         company: "KLA"
         companyUrl: "https://www.kla.com/"
         date: "May 2025 — Jul 2025"
-        content: "Optimized the YOLO training pipeline for semiconductor defect detection, implemented deterministic augmentation buffer and a bunch of new augmentations to improve mAP and training speed."
+        content: "Optimized the YOLO training pipeline for semiconductor defect detection, implemented a deterministic augmentation buffer and a bunch of new augmentations to improve mAP and training speed."
 
       - job: "ML Researcher (funded by Zellic)"
         company: "Proteus"
