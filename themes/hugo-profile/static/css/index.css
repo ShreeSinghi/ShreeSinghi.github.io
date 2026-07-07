@@ -9,7 +9,7 @@
 }
 @keyframes fade-bottom {
   0% {
-    transform: translateY(50px);
+        transform: translateY(100px);
     opacity: 0;
   }
   100% {
@@ -190,6 +190,17 @@ header .navbar.animate {
 
 #hero .hero-content > a:hover::after, #hero .hero-content > a:focus::after, #hero .hero-content > a:active::after {
     width: 100%;
+}
+
+@media all and (min-width:769px) {
+    #hero {
+        min-height: auto;
+        padding-bottom: 2rem;
+    }
+
+    #hero .image {
+        padding-top: 1rem !important;
+    }
 }
 
 
