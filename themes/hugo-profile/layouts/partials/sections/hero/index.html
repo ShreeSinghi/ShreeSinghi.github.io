@@ -1,6 +1,6 @@
 {{ if .Site.Params.hero.enable | default false }}
-<section id="hero" class="py-2 align-middle">
-    <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
+<section id="hero">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 content {{ if .Site.Params.animate }}animate{{ end }}" id="primary-font">
                 <span class="subtitle">
@@ -15,7 +15,7 @@
                 <p class="hero-content">
                     {{ .Site.Params.hero.content | markdownify }}
                 </p>
-                <div class="row">
+                <div class="row hero-actions align-items-center">
                     <div class="col-auto h-100">
                         {{ if .Site.Params.hero.button.enable }}
                         <a href="{{ .Site.Params.hero.button.url }}" class="btn" {{ cond .Site.Params.hero.button.download "download" "" }}
@@ -36,10 +36,10 @@
                     <div class="col-sm-12 col-md-9 pt-5 image {{ if .Site.Params.animate }}animate{{ end }} px-5 px-md-5 px-lg-0 text-center">
                         <img src="{{ .Site.Params.hero.image }}"
                             class="img-thumbnail mx-auto{{ if .Site.Params.hero.roundImage }} rounded-circle{{ end }}"
-                            alt=""
+                            alt="{{ .Site.Params.hero.title }} — {{ .Site.Params.hero.imageCaption | default "portrait" }}"
                         >
                     </div>
-                    <p class="figure-caption text-center" style="font-style: italic; color: #666; margin-top: 12px; font-size: 0.9em;">
+                    <p class="figure-caption text-center">
                         Figure 1: {{ .Site.Params.hero.imageCaption }}
                     </p>
                 </div>

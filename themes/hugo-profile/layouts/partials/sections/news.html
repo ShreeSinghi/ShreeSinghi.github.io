@@ -1,123 +1,74 @@
 {{ if .Site.Params.news.enable }}
-<section id="news" class="container-fluid py-4">
+<section id="news" class="container-fluid">
     <div class="container">
-        <h2 class="text-center mb-3" style="color: var(--text-color) !important;">{{ .Site.Params.news.title }}</h2>
+        <h2 class="text-center">{{ .Site.Params.news.title }}</h2>
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
-                <div class="news-scroll-container">
-                    <ul class="list-unstyled mb-0">
-                        {{ range .Site.Params.news.items }}
-                        <li class="d-flex align-items-start mb-2 pb-2 news-item">
-                            <span class="me-2 mt-1 news-bullet">•</span>
-                            <div class="flex-grow-1">
-                                <small class="d-block mb-1 news-date">{{ .date }}</small>
-                                <span class="news-content">{{ .content | markdownify }}</span>
-                            </div>
-                        </li>
-                        {{ end }}
-                    </ul>
-                </div>
+                <ul class="news-list list-unstyled mb-0">
+                    {{ range .Site.Params.news.items }}
+                    <li class="news-item">
+                        <span class="news-date">{{ .date }}</span>
+                        <span class="news-content">{{ .content | markdownify }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-#news h2 {
-    color: var(--text-color) !important;
-    opacity: 0.9;
-}
-
-.news-scroll-container {
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid var(--secondary-color);
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: var(--secondary-color) !important;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--secondary-color);
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+/* A short list of dated updates. It used to sit in a 300px scroll box, which
+   put a second scrollbar inside the page for three items; the list is simply
+   laid out in full now. */
+.news-list {
+    border-top: 1px solid var(--border-color);
 }
 
 .news-item {
-    border-bottom: 1px solid var(--background-color) !important;
-    opacity: 0.95;
-    transition: all 0.2s ease;
-}
-
-.news-item:hover {
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-.news-bullet {
-    color: var(--primary-color) !important;
-    font-weight: bold;
-    font-size: 1.2rem;
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .news-date {
-    color: var(--text-secondary-color) !important;
-    font-weight: 500;
-    opacity: 0.8;
-    font-size: 0.85rem;
+    color: var(--text-secondary-color);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .news-content {
-    color: var(--text-color) !important;
+    color: var(--text-color);
     font-size: 0.95rem;
-    line-height: 1.4;
-    opacity: 0.9;
+    line-height: 1.6;
 }
 
 .news-content p {
     margin-bottom: 0;
-    color: var(--text-color) !important;
 }
 
 .news-content a {
-    color: var(--text-link-color) !important;
-    text-decoration: none;
+    color: var(--text-link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--border-color-strong);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 0.2s var(--ease-out);
 }
 
 .news-content a:hover {
-    color: var(--primary-color) !important;
-    opacity: 0.8;
+    text-decoration-color: var(--primary-color);
 }
 
-/* Webkit scrollbar styling */
-.news-scroll-container::-webkit-scrollbar {
-    width: 6px;
-}
-
-.news-scroll-container::-webkit-scrollbar-track {
-    background: var(--background-color);
-    border-radius: 3px;
-}
-
-.news-scroll-container::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 3px;
-    opacity: 0.7;
-}
-
-.news-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
-    opacity: 1;
-}
-
-/* Remove bottom border from last item */
-.news-scroll-container ul li:last-child {
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* Dark theme compatibility */
-@media (prefers-color-scheme: dark) {
-    .news-scroll-container {
-        scrollbar-color: var(--primary-color) var(--secondary-color);
+@media (max-width: 575px) {
+    .news-item {
+        grid-template-columns: 1fr;
+        gap: 0.35rem 0;
     }
 }
 </style>

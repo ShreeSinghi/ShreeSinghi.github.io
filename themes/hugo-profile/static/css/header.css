@@ -2,21 +2,57 @@ header {
     z-index: 10;
     position: relative;
     top: 0;
+    background-color: var(--background-color);
 }
 
+/* Frosted bar once the page has scrolled, so content passing underneath stays
+   legible without the header turning into a solid slab. */
 .showHeaderOnTop {
-    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
     top: 0;
     position: sticky;
+    background-color: color-mix(in srgb, var(--background-color) 82%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+header .navbar {
+    padding-bottom: 0.75rem;
 }
 
 header .navbar .navbar-nav a {
     color: var(--text-color) !important;
 }
 
-#theme-toggle {
-    background-color: var(--background-color) !important;
-    color: var(--text-color) !important;
+header .navbar-brand {
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+
+/* Active-section underline, drawn from the accent. */
+header .navbar-nav .nav-link {
+    position: relative;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+}
+
+header .navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.65rem;
+    right: 0.65rem;
+    bottom: 0.15rem;
+    height: 1.5px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease-out);
+}
+
+header .navbar-nav .nav-link:hover::after,
+header .navbar-nav .nav-link:focus-visible::after {
+    transform: scaleX(1);
 }
 
 .navbar-toggler {

@@ -71,104 +71,127 @@ header .navbar.animate {
 /* hero */
 
 #hero {
-    min-height: 100vh;
-    line-height: 2rem;
     max-width: 100%;
-}
-#hero .content.animate {
-    animation: fade-left 1s ease-out;
+    padding-top: clamp(2.5rem, 6vw, 5rem) !important;
 }
 
-#hero .hero-bottom-svg {
-    opacity: 0.5;
-    position: absolute;
-    bottom: -50px;
-    left: -150px;
+#hero .content.animate {
+    animation: fade-left 0.8s var(--ease-out) both;
 }
 
 #hero .subtitle {
-    font-size: clamp(14px,5vw,16px);
-    opacity: 0.6;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+    margin-bottom: 0.5rem;
 }
 
 #hero h1 {
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(2.75rem, 7vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
     color: var(--primary-color) !important;
+    margin: 0;
+    text-wrap: balance;
 }
 
+/* The role sits under the name, so it reads as a caption to it rather than
+   competing with it for size. */
 #hero h2 {
-    font-size: clamp(40px, 8vw, 60px);
-    opacity: 0.5;
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--text-secondary-color);
+    margin: 0.75rem 0 0;
+    max-width: 22ch;
+    text-wrap: balance;
 }
 
 #hero p {
-    margin: 20px 0px 0px;
-    max-width: 640px;
-    opacity: 0.8;
+    margin: 1.5rem 0 0;
+    max-width: 58ch;
+    line-height: 1.65;
+    color: var(--text-color);
 }
 
 #hero .image img {
-    box-shadow:0px 8px 56px rgba(15, 80, 100, 0.16);
+    box-shadow: var(--shadow-lg);
     padding: 0;
-    border: 3px solid var(--secondary-color);
-    border-radius: 1rem;
+    border: 4px solid var(--secondary-color);
+    border-radius: var(--radius-lg);
+    transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 
 #hero .image.animate img {
-    animation: fade-in 1s ease-out;
-    transition: box-shadow 0.3s;
+    animation: fade-in 0.9s var(--ease-out) both;
 }
 
 #hero .image img:hover {
-    cursor: pointer;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(21, 26, 35, 0.06), 0 28px 56px rgba(21, 26, 35, 0.14);
 }
 
-#hero .image.animate img:hover {
-    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
-    filter: contrast(1.2);
-    cursor: pointer;
+#hero .hero-actions {
+    margin-top: 2.5rem;
+    row-gap: 1.25rem;
 }
 
+/* The icon strip wraps under Resume on narrow screens; this keeps it on the
+   same left edge and off the button. The .px-1 wrappers eat 4px of the 12px
+   gutter the Resume column gets. */
+#hero .hero-actions > div:last-child {
+    padding-left: 0.5rem !important;
+}
+
+/* Fixed 44px box: these collapsed to 24px tall while the icon font was still
+   loading, which is below the minimum comfortable touch target. */
 #hero a.btn.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    line-height: 1;
     color: var(--primary-color) !important;
-    line-height: 0%;
     border-radius: 50%;
-    margin-top: 50px;
-    padding: 0.7rem;
-    border: 1px solid var(--primary-color);
-    transition: none;
+    border: 1px solid var(--border-color-strong);
+    transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
 }
 
+#hero a.btn.social-icon svg,
 #hero a.btn.social-icon img {
     width: 1em;
+    height: 1em;
 }
 
 #hero a.btn.social-icon:hover {
-    opacity: 0.8;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color-wash) !important;
 }
 
-#hero a.btn {
-    margin-top: 50px;
+/* Resume is the one thing to do here, so it is the one solid control. */
+#hero a.btn:not(.social-icon) {
     padding: 0.7rem 1.75rem;
     border: 1px solid var(--primary-color);
-    color: var(--text-color) !important;
-    border-radius: .75rem;
-    transition: none;
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }
 
-#hero a.btn:focus {
-    box-shadow: none;
+#hero a.btn:not(.social-icon):hover {
+    background-color: var(--primary-color-strong);
+    border-color: var(--primary-color-strong);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
-#hero a.btn:hover {
-    background-color: var(--secondary-color) !important;
-    color: var(--text-color) !important;
-    opacity: 0.9;
-}
-
-#hero a.btn.social-icon:hover {
-    background-color: var(--background-color) !important;
-    opacity: 0.7;
+#hero a.btn:not(.social-icon):active {
+    transform: translateY(0);
 }
 
 #hero .hero-content > a {
@@ -177,48 +200,43 @@ header .navbar.animate {
     color: var(--text-link-color) !important;
 }
 
+/* scaleX rather than an animated width, so the underline composites instead of
+   forcing layout on every frame. */
 #hero .hero-content > a::after {
     content: "";
     display: block;
-    width: 0px;
     height: 2px;
-    bottom: 0.37em;
     background-color: var(--primary-color);
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    opacity: 0.5;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease-out);
 }
 
-#hero .hero-content > a:hover::after, #hero .hero-content > a:focus::after, #hero .hero-content > a:active::after {
-    width: 100%;
+#hero .hero-content > a:hover::after,
+#hero .hero-content > a:focus-visible::after {
+    transform: scaleX(1);
 }
 
-@media all and (min-width:769px) {
-    #hero {
-        min-height: auto;
-        padding-bottom: 2rem;
-    }
-
+@media all and (max-width: 991px) {
     #hero .image {
-        padding-top: 1rem !important;
+        padding-top: 2.5rem !important;
     }
 }
 
 
 
 /* about me */
-#about h3 {
-    color: var(--text-secondary-color) !important;
-}
 
 #about .image img {
-    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
-    transition: box-shadow 0.3s;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
     padding: 0;
-    border: 0;
+    border: 4px solid var(--secondary-color);
 }
 
 #about .image img:hover {
-    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 #about ul {
@@ -231,174 +249,72 @@ header .navbar.animate {
     list-style: none;
 }
 
-#about ul li {
+#about ul li,
+#experience .job-content ul li {
     position: relative;
     margin-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 1.35rem;
 }
 
-#about ul li::before {
-    content: "▹";
-    color: var(--primary-color);
+/* Drawn marker rather than a Unicode glyph standing in for one. */
+#about ul li::before,
+#experience .job-content ul li::before {
+    content: "";
     position: absolute;
-    left: 0px;
+    left: 0.15rem;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
 }
 
 #about .content {
-    font-weight: 500;
-    opacity: 0.9 !important;
-    line-height: 1.7rem !important;
+    line-height: 1.75;
+    color: var(--text-color);
+    max-width: 68ch;
 }
 
+#about .content p + p {
+    margin-top: 1rem;
+}
+
+/* Inline links wipe in an underline rather than pushing a block pseudo-element
+   onto its own line, which is what the old inline-block trick did. */
 #about a {
-    display: inline-block;
     text-decoration: none;
     color: var(--text-link-color) !important;
+    background-image: linear-gradient(var(--primary-color), var(--primary-color));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 0.25s var(--ease-out);
 }
 
-#about a::after {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 2px;
-    bottom: 0.37em;
-    background-color: var(--primary-color);
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    opacity: 0.5;
+#about a:hover,
+#about a:focus-visible {
+    background-size: 100% 1px;
 }
 
-#about a:hover::after, #about a:focus::after, #about a:active::after {
-    width: 100%;
-}
+/* experience — the section is rendered as a timeline; see assets/css/timeline.css */
 
-/* experience */
-
-#experience h3 {
-    color: var(--text-secondary-color) !important;
-}
-
-#experience * {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-#experience .tab-pane > * {
-    opacity: 0.9;
-}
-
-#experience .tab-pane small {
-    opacity: 0.8;
-}
-
-#experience .tab-pane ul {
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
-
-#experience .experience-container .tab-content > .tab-pane p {
-    padding: 1% 0;
-    margin: 0;
-}
-
-#experience .experience-container {
-    background-color: var(--secondary-color) !important;
-    border-radius: .75rem;
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
-}
-
-#experience .nav-item .nav-link {
-    color: var(--text-color) !important;
-    border-bottom: 2px solid transparent; 
-    border-radius: 0%;
-    transition: none;
-    cursor: pointer;
-}
-
-#experience .nav-item .nav-link.active {
-    color: var(--text-color) !important;
-    border-bottom: 2px solid var(--primary-color); 
-    opacity: 0.8;
-}
-
-#experience .nav-item .nav-link.active:hover { 
-    transition: none !important;
-}
-
-#experience .nav-item .nav-link:hover {
-    border-bottom: 2px solid var(--primary-color);
-    opacity: 0.8;
-}
-
-#experience a {
-    opacity: 0.9;
-    display: inline-block;
+#experience .job-content a {
+    display: inline;
     text-decoration: none;
     color: var(--text-link-color) !important;
+    background-image: linear-gradient(var(--primary-color), var(--primary-color));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 0.25s var(--ease-out);
 }
 
-#experience a::after {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 2px;
-    bottom: 0.37em;
-    background-color: var(--primary-color);
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    opacity: 0.5;
-}
-
-#experience a:hover::after, #experience a:focus::after, #experience a:active::after {
-    width: 100%;
-}
-
-#experience .experience-container .tab-content .tab-pane ul {
-    overflow: hidden;
-    list-style: none;
-    margin-bottom: 0;
-}
-
-#experience .experience-container .tab-content .tab-pane ul li {
-    position: relative;
-    margin-bottom: 10px;
-    padding-left: 20px;
-}
-
-#experience .experience-container .tab-content .tab-pane ul li::before {
-    content: "▹";
-    color: var(--primary-color);
-    position: absolute;
-    left: 0px;
-}
-
-#experience .experience-container .tab-content .tab-pane .featuredLink a::after {
-    display: block;
-    width: auto;
-    height: auto;
-    bottom: 0em;
-    background-color: transparent;
-    transition: none;
-    opacity: 1;
-}
-
-#experience .experience-container .tab-content .tab-pane .featuredLink a.btn {
-    border: 1px solid var(--primary-color);
-    border-radius: .75rem;
-    transition: none;
-}
-
-#experience .experience-container .tab-content .tab-pane .featuredLink a.btn:focus {
-    box-shadow: none;
-}
-
-#experience .experience-container .tab-content .tab-pane .featuredLink a.btn:hover {
-    color: var(--text-color) !important;
-    opacity: 0.7;
+#experience .job-content a:hover,
+#experience .job-content a:focus-visible {
+    background-size: 100% 1px;
 }
 
 /* Education */
-
-#education .container > h3 {
-    color: var(--text-secondary-color) !important;
-}
 
 #education .row .index {
     opacity: 0.8;
@@ -418,7 +334,7 @@ header .navbar.animate {
 
 #education .card {
     border-radius: 1.5rem;
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+    box-shadow: var(--shadow-md);
     border: 2px solid var(--text-secondary-color) !important;
     transition: box-shadow .2s linear,opacity .2s linear;
     transition: transform 0.2s;
@@ -437,7 +353,7 @@ header .navbar.animate {
 
 #education .card:hover {
     transition: 0.3s;
-    box-shadow: 0 4px 11px rgb(15 80 100 / 16%);
+    box-shadow: var(--shadow-lg);
     border: 2px solid var(--primary-color) !important;
 }
 
@@ -487,22 +403,18 @@ header .navbar.animate {
     text-decoration: none;
 }
 
-#achievements h3 {
-    color: var(--text-secondary-color) !important;
-}
-
 #achievements .card {
-    cursor: context-menu;
+    
     background-color: var(--secondary-color) !important;
     border-radius: 1rem;
-    box-shadow: 0 0 36px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
     /* transform: translate3d(0, 0, 0); */
     transition: box-shadow .2s linear,opacity .2s linear;
     border: 2px solid transparent;
 }
 
 #achievements a.card {
-    cursor: alias;
+    
 }
 
 #achievements .card h5 {
@@ -530,33 +442,52 @@ header .navbar.animate {
 
 /* contact */
 
-#contact h3 {
-    color: var(--text-secondary-color) !important;
+#contact .contact-intro {
+    max-width: 56ch;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+#contact .contact-intro a {
+    color: var(--text-link-color) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--border-color-strong);
+    transition: text-decoration-color 0.2s var(--ease-out);
+}
+
+#contact .contact-intro a:hover {
+    text-decoration-color: var(--primary-color);
 }
 
 #contact .btn {
-    transition: none;
-    transition: opacity 0.3s;
-    border-radius: .5rem !important;
-    border-color: var(--primary-color) !important;
-    background-color: var(--secondary-color) !important;
-    color: var(--text-color) !important;
+    padding: 0.7rem 1.75rem;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--primary-color) !important;
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }
 
 #contact .btn:hover {
-    opacity: .7;
+    background-color: var(--primary-color-strong) !important;
+    border-color: var(--primary-color-strong) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
-#contact .btn:focus {
-    box-shadow: none !important;
+#contact .btn:active {
+    transform: translateY(0);
 }
 
 #contact form .form-control {
     background-color: var(--secondary-color);
     color: var(--text-color);
-    border-radius: .7rem;
-    border: 1px solid var(--text-secondary-color);
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color-strong);
+    box-shadow: var(--shadow-sm);
 }
 
 #contact-form-status {
@@ -578,12 +509,12 @@ header .navbar.animate {
     background-color: white;
     padding: 0.5rem;
     margin-left: 0.5rem;
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+    box-shadow: var(--shadow-sm);
     font-size: .6rem !important;
 }
 
 #contact-form-status .alert {
     border-radius: 0.5rem;
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 5%);
+    box-shadow: var(--shadow-sm);
     padding: .5rem 1rem;
 }

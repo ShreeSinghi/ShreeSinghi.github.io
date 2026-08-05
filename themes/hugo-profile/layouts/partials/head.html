@@ -9,14 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
 >
 <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       media="print" onload="this.media='all'" />
 <noscript>
   <link
-          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
           rel="stylesheet">
 </noscript>
 
@@ -49,54 +49,154 @@
 
 <style>
     :root {
-        --text-color: {{ .Site.Params.color.textColor | default "#343a40" }};
-        --text-secondary-color: {{ .Site.Params.color.secondaryTextColor | default "#6c757d" }};
-        --text-link-color: {{ .Site.Params.color.textLinkColor | default (.Site.Params.color.primaryColor | default "#007bff") }};
-        --background-color: {{ .Site.Params.color.backgroundColor | default "#eaedf0" }};
-        --secondary-background-color: {{ .Site.Params.color.secondaryBackgroundColor | default "#64ffda1a" }};
-        --primary-color: {{ .Site.Params.color.primaryColor | default "#007bff" }};
-        --secondary-color: {{ .Site.Params.color.secondaryColor | default "#f8f9fa" }};
+        --text-color: {{ .Site.Params.color.textColor | default "#151a23" }};
+        --text-secondary-color: {{ .Site.Params.color.secondaryTextColor | default "#5b6577" }};
+        --text-link-color: {{ .Site.Params.color.textLinkColor | default (.Site.Params.color.primaryColor | default "#1d4ed8") }};
+        --background-color: {{ .Site.Params.color.backgroundColor | default "#eef1f6" }};
+        --secondary-background-color: {{ .Site.Params.color.secondaryBackgroundColor | default "#f7f9fc" }};
+        --primary-color: {{ .Site.Params.color.primaryColor | default "#1d4ed8" }};
+        --secondary-color: {{ .Site.Params.color.secondaryColor | default "#ffffff" }};
 
-        /* dark mode colors */
-        --text-color-dark: {{ .Site.Params.color.darkmode.textColor | default "#e4e6eb" }};
-        --text-secondary-color-dark: {{ .Site.Params.color.darkmode.secondaryTextColor | default "#b0b3b8" }};
-        --text-link-color-dark: {{ .Site.Params.color.darkmode.textLinkColor | default (.Site.Params.color.darkmode.primaryColor | default "#ffffff") }};
-        --background-color-dark: {{ .Site.Params.color.darkmode.backgroundColor | default "#18191a" }};
-        --secondary-background-color-dark: {{ .Site.Params.color.darkmode.secondaryBackgroundColor | default "#212529" }};
-        --primary-color-dark: {{ .Site.Params.color.darkmode.primaryColor | default "#ffffff" }};
-        --secondary-color-dark: {{ .Site.Params.color.darkmode.secondaryColor | default "#212529" }};
+        /* Accent derivatives — kept in sync with --primary-color by hand so the
+           palette stays readable without a preprocessor. */
+        --primary-color-strong: #1739a8;
+        --primary-color-wash: #e6ecfb;
+        --border-color: #dde3ec;
+        --border-color-strong: #c6cfdd;
+
+        /* Elevation: every level carries an offset and a soft blur. */
+        --shadow-sm: 0 1px 2px rgba(21, 26, 35, 0.05), 0 2px 6px rgba(21, 26, 35, 0.05);
+        --shadow-md: 0 2px 4px rgba(21, 26, 35, 0.04), 0 8px 20px rgba(21, 26, 35, 0.07);
+        --shadow-lg: 0 4px 8px rgba(21, 26, 35, 0.05), 0 18px 40px rgba(21, 26, 35, 0.10);
+
+        --radius-sm: 0.5rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1rem;
+
+        /* One vertical rhythm for every section on the page. */
+        --section-gap: clamp(3.5rem, 7vw, 6rem);
+
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    html {
+        background-color: var(--background-color);
+        scroll-behavior: smooth;
+        /* Sticky header is ~81px; keep anchor targets clear of it. */
+        scroll-padding-top: 6rem;
+    }
+
     body {
         font-size: {{ .Site.Params.font.fontSize | default "1rem" }};
         font-weight: {{ .Site.Params.font.fontWeight | default "400" }};
         line-height: {{ .Site.Params.font.lineHeight | default "1.5" }};
         text-align: {{ .Site.Params.font.textAlign | default "left" }};
-    }
-
-    html {
-        background-color: var(--background-color) !important;
-    }
-
-    body::-webkit-scrollbar {
-        height: 0px;
-        width: 8px;
         background-color: var(--background-color);
+        color: var(--text-color);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* --- Browser surfaces: theme what the browser would otherwise default --- */
+
+    ::selection {
+        background-color: var(--primary-color-wash);
+        color: var(--primary-color-strong);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 3px;
+        border-radius: 3px;
+    }
+
+    a {
+        color: var(--text-link-color);
+        text-underline-offset: 0.18em;
+        text-decoration-thickness: 1px;
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-color-strong) transparent;
+    }
+
+    ::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+        background-color: transparent;
     }
 
     ::-webkit-scrollbar-track {
-        border-radius: 1rem;
+        background-color: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
-        border-radius: 1rem;
-        background: #b0b0b0;
-        outline: 1px solid var(--background-color);
+        border-radius: 999px;
+        background: var(--border-color-strong);
     }
 
-    #search-content::-webkit-scrollbar {
-        width: .5em;
-        height: .1em;
-        background-color: var(--background-color);
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-secondary-color);
+    }
+
+    input, textarea {
+        caret-color: var(--primary-color);
+    }
+
+    ::placeholder {
+        color: var(--text-secondary-color);
+        opacity: 1;
+    }
+
+    /* --- Section rhythm: one scale, applied once, instead of per-section
+           Bootstrap utilities that disagreed with each other. --- */
+
+    #content > section {
+        padding-top: var(--section-gap);
+        padding-bottom: 0;
+    }
+
+    #content > section:last-child {
+        padding-bottom: var(--section-gap);
+    }
+
+    #content > section > .container,
+    #content > section > .container-fluid {
+        max-width: 1140px;
+    }
+
+    /* Section headings: more air above than below, consistent size and weight
+       regardless of which level the partial happens to use. */
+    #content > section > .container > h2,
+    #content > section > .container > h3,
+    #content > section > h2,
+    #content > section > h3,
+    #content > section > .container-fluid > .container > h2 {
+        font-family: "Alata", sans-serif;
+        font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+        font-weight: 400;
+        letter-spacing: -0.015em;
+        color: var(--text-color);
+        text-align: center;
+        margin: 0 0 2.25rem;
+    }
+
+    /* Figure captions were inline-styled at #666 in three places. */
+    .figure-caption {
+        color: var(--text-secondary-color) !important;
+        font-size: 0.85rem !important;
+        line-height: 1.4;
+        margin-top: 0.75rem !important;
     }
 </style>
 

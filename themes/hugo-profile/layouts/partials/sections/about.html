@@ -1,14 +1,14 @@
 {{ if .Site.Params.about.enable | default false }}
-<section id="about" class="py-0 py-sm-0">
+<section id="about">
     <div class="container bg-transparent">
         <h3 class="text-center bg-transparent">{{ .Site.Params.about.title }}</h3>
-        <div class="bg-transparent row justify-content-center px-3 py-0 align-items-stretch">
+        <div class="bg-transparent row justify-content-center align-items-stretch">
             {{ if .Site.Params.about.image }}
             <div class="col-sm-12 col-md-8 col-lg-4 mb-5 mb-sm-0 mb-md-5 mb-lg-0 d-none d-sm-none d-md-block d-flex flex-column">
                 <div class="image d-flex px-5 flex-grow-1 align-items-center">
                     <div class="w-100 text-center">
-                        <img src="{{ .Site.Params.about.image }}" class="img-thumbnail mx-auto rounded-circle" alt="">
-                        <p class="figure-caption text-center" style="font-style: italic; color: #666; margin-top: 12px; font-size: 0.9em;">
+                        <img src="{{ .Site.Params.about.image }}" class="img-thumbnail mx-auto rounded-circle" alt="{{ .Site.Params.title }} — {{ .Site.Params.about.imageCaption | default "portrait" }}">
+                        <p class="figure-caption text-center">
                             Figure 2: {{ .Site.Params.about.imageCaption }}
                         </p>
                     </div>

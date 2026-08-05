@@ -1,64 +1,110 @@
 /* projects */
 
-#projects h3 {
-    color: var(--text-secondary-color) !important;
-}
-
 #projects a {
     text-decoration: none;
     color: var(--text-link-color) !important;
 }
 
 #projects .badge {
-    background-color: var(--background-color) !important;
-    color: var(--text-color) !important;
-    margin: 0 1%;
+    background-color: var(--primary-color-wash) !important;
+    color: var(--primary-color-strong) !important;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    padding: 0.35em 0.7em;
+    border-radius: 999px;
+    margin: 0 0.35rem 0.35rem 0;
 }
 
 #projects .card {
     background-color: var(--secondary-color) !important;
-    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
-    min-height: 400px;
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
-    border-radius: 1rem;
-    border: none !important;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color) !important;
+    transition: box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 
 #projects .card:hover {
-    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
-    transition: transform 0.3s;
-    transform: translateY(-7px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-color-strong) !important;
+    transform: translateY(-4px);
 }
 
 #projects .card .card-head {
-    -o-object-fit: cover;
-    object-fit: cover;
     overflow: hidden;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
     border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    background-color: var(--background-color);
 }
 
-#projects .card .card-footer {
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+/* Fixed 2:1 frame so the three cards line up. The sources run from 1.95:1 to
+   2.87:1 — a cover crop cut the wide DevRev wordmark in half, so they are
+   contained against the page tint instead. */
+#projects .card-img-top {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    object-fit: contain;
+    padding: 0.85rem;
+    border-radius: 0;
+    transition: transform 0.5s var(--ease-out);
 }
 
 #projects .card:hover .card-img-top {
-    transform: scale(1.2);
-    transition: all 0.3s ease-out;
+    transform: scale(1.04);
 }
 
-#projects .card-img-top {
-    transition: transform 0.3s;
+#projects .card-title {
+    font-family: "Alata", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text-color) !important;
+    margin-bottom: 0.5rem;
+}
+
+#projects .card-text {
+    color: var(--text-secondary-color) !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+#projects .card-footer {
+    background-color: transparent !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+#projects .card-footer a {
+    color: var(--text-secondary-color) !important;
+    transition: color 0.2s var(--ease-out);
+}
+
+#projects .card-footer a:hover {
+    color: var(--primary-color) !important;
 }
 
 #projects .float-end .btn {
-    transition: none;
-    border-radius: .5rem !important;
-    border-color: var(--primary-color) !important;
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
 }
 
-#projects .float-end .btn:focus {
-    box-shadow: none !important;
+#projects .float-end .btn:hover {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+/* Reveal on scroll — see partials/scripts.html. */
+#projects .card.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+#projects .card.reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }

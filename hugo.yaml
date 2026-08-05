@@ -8,10 +8,6 @@ caches:
   images:
     dir: :cacheDir/images
 
-color:
-  primary-color: "#ff5722"
-  background-color: "#111111"
-
 outputs:
   home:
     - "HTML"
@@ -39,6 +35,17 @@ params:
   useBootstrapCDN: false
   mathjax: false
   animate: true
+
+  # Light-only palette. Deep ink blue accent on a soft blue-grey page,
+  # white card surfaces so elevation actually reads.
+  color:
+    textColor: "#151a23"
+    secondaryTextColor: "#5b6577"
+    textLinkColor: "#1d4ed8"
+    primaryColor: "#1d4ed8"
+    backgroundColor: "#eef1f6"
+    secondaryColor: "#ffffff"
+    secondaryBackgroundColor: "#f7f9fc"
 
   font:
     fontSize: 1rem
