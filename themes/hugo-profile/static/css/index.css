@@ -137,10 +137,10 @@ header .navbar.animate {
     row-gap: 1.25rem;
 }
 
-/* The icon strip wraps under Resume on narrow screens; this keeps it on the
-   same left edge and off the button. The .px-1 wrappers eat 4px of the 12px
-   gutter the Resume column gets. */
-#hero .hero-actions > div:last-child {
+/* Resume and the social links share one column, so the row's -12px gutter has
+   to be paid back here; the .px-1 wrappers cover the remaining 4px and the
+   strip lines up with the text above it. */
+#hero .hero-actions > div {
     padding-left: 0.5rem !important;
 }
 
@@ -169,29 +169,6 @@ header .navbar.animate {
 #hero a.btn.social-icon:hover {
     border-color: var(--primary-color);
     background-color: var(--primary-color-wash) !important;
-}
-
-/* Resume is the one thing to do here, so it is the one solid control. */
-#hero a.btn:not(.social-icon) {
-    padding: 0.7rem 1.75rem;
-    border: 1px solid var(--primary-color);
-    background-color: var(--primary-color);
-    color: #ffffff !important;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    box-shadow: var(--shadow-sm);
-    transition: background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
-}
-
-#hero a.btn:not(.social-icon):hover {
-    background-color: var(--primary-color-strong);
-    border-color: var(--primary-color-strong);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-#hero a.btn:not(.social-icon):active {
-    transform: translateY(0);
 }
 
 #hero .hero-content > a {

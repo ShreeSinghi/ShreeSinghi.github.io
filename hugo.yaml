@@ -74,8 +74,8 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Shree Singhi"
-    subtitle: "Researcher — Machine Learning & Computer Vision"
-    content: "Undergrad researcher at IIT Roorkee. I work on Geometry Processing, XAI, Adversarial ML and Generative Models."
+    subtitle: "Researcher in Computer Vision & Machine Learning"
+    content: ""
     image: /images/camera.jpg
     imageCaption: amateur photography at NeurIPS
     bottomImage:
@@ -106,7 +106,7 @@ params:
     image: "/images/icecream.jpg"
     imageCaption: enjoying some icecream
     content: |-
-      I'm a Senior at IIT Roorkee, pursuing a Bachelor's in Data Science and AI. I am experienced in Computer Vision, XAI, Geometry Processing, Adversarial ML and eating icecream. I lead the <a href="https://dsgiitr.in/">Data Science Group</a>, IITR's student-run ML community, as Secretary. We build projects, publish research, and organize lectures, workshops, and hackathons to drive AI on campus.
+      I'm a Computer Vision Researcher, currently working at Drafted in San Francisco. I graduated from IIT Roorkee with a Bachelor's in Data Science and AI. During my undergrad I worked across several CV and ML fields, including Diffusion Models, Object Detection, XAI, Geometry Processing and Adversarial ML. I previously led the <a href="https://dsgiitr.in/">Data Science Group</a>, IITR's student-run ML community, as Secretary — building projects, publishing research, and organizing lectures, workshops, and hackathons to drive AI on campus.
       
       Outside of academics, you'll usually find me on a squash court, out for a run, or scouting for my next ice cream 🍨 or boba fix 🧋.
     skills:
@@ -235,7 +235,7 @@ params:
   # Contact
   contact:
     enable: true
-    content: "My inbox is always open — singhishree@gmail.com. I don't check twitter too often, however, you can reach out to me on LinkedIn. I love connecting with people, so feel free to say hi!"
+    content: "My inbox is always open — singhishree@gmail.com. I don't check X too often, however, you can reach out to me on LinkedIn. I love connecting with people, so feel free to say hi!"
 
   footer:
     # recentPosts:

@@ -12,21 +12,25 @@
                 <h2>
                     {{ .Site.Params.hero.subtitle }}
                 </h2>
+                {{ with .Site.Params.hero.content }}
                 <p class="hero-content">
-                    {{ .Site.Params.hero.content | markdownify }}
+                    {{ . | markdownify }}
                 </p>
+                {{ end }}
                 <div class="row hero-actions align-items-center">
-                    <div class="col-auto h-100">
-                        {{ if .Site.Params.hero.button.enable }}
-                        <a href="{{ .Site.Params.hero.button.url }}" class="btn" {{ cond .Site.Params.hero.button.download "download" "" }}
-			  {{ if .Site.Params.hero.button.newPage | default true }}
-                          target="_blank"
-                          {{ end }}>
-                            {{ .Site.Params.hero.button.name }}
-                        </a>
-                        {{ end }}
-                    </div>
                     <div class="col-auto px-0 h-100">
+                        {{ if .Site.Params.hero.button.enable }}
+                        <span class="px-1">
+                            <a href="{{ .Site.Params.hero.button.url }}" class="btn social-icon" {{ cond .Site.Params.hero.button.download "download" "" }}
+			      {{ if .Site.Params.hero.button.newPage | default true }}
+                              target="_blank"
+                              {{ end }}
+                              title="{{ .Site.Params.hero.button.name }}"
+                              aria-label="{{ .Site.Params.hero.button.name }}">
+                                <i class="fas fa-file-lines" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                        {{ end }}
                         {{- partial "sections/hero/social.html" . -}}
                     </div>
                 </div>
