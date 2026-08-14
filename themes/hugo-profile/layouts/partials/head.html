@@ -47,6 +47,9 @@
 <!-- theme -->
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/theme.css" media="all">
 
+<!-- interactive background -->
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/background.css" media="all">
+
 <style>
     :root {
         --text-color: {{ .Site.Params.color.textColor | default "#151a23" }};
@@ -91,7 +94,9 @@
         font-weight: {{ .Site.Params.font.fontWeight | default "400" }};
         line-height: {{ .Site.Params.font.lineHeight | default "1.5" }};
         text-align: {{ .Site.Params.font.textAlign | default "left" }};
-        background-color: var(--background-color);
+        /* html owns the page fill; body stays clear so the background canvas
+           at z-index -1 is not painted over by body's own background box. */
+        background-color: transparent;
         color: var(--text-color);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

@@ -1,0 +1,17 @@
+/* Interactive page background.
+
+   The canvas sits at z-index -1, which paints *before* the backgrounds of
+   in-flow blocks — so body must not carry the page fill or it would bury the
+   field. html keeps it instead (see head.html). */
+
+#bg-field {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    pointer-events: none;
+}
+
+@media print {
+    #bg-field { display: none; }
+}
