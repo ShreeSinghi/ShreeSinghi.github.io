@@ -19,6 +19,8 @@
   <!-- javascripts -->
   <!-- <script src="/js/jquery-3.6.0.min.js"></script> -->
 
+  {{- partial "background.html" . -}}
+
   {{- partial "sections/header.html" . -}}
   <div id="content">
     {{- block "main" . }}{{- end }}

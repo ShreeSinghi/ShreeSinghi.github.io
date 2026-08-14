@@ -174,6 +174,13 @@ params:
   publications:
     enable: true
     items:
+      - title: "B-DENSE: Branching For Dense Ensemble Network Supervision Efficiency"
+        venue: "ICLR 2026 — DeLTa Workshop"
+        image: /images/projects/bdense.png
+        url: "https://arxiv.org/abs/2602.15971"
+        date: "Feb 2026"
+        summary: "Multi-branch trajectory alignment for diffusion distillation: the student maps every teacher timestep at once, recovering the structure sparse supervision throws away."
+
       - title: "DINOHash: Learning Adversarially Robust Perceptual Hashes from Self-Supervised Features"
         venue: "ICML 2025 — CODEML Workshop"
         image: /images/projects/proteus.png
