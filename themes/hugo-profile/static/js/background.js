@@ -26,6 +26,11 @@
     var REACH = 190;           // pointer influence radius
     var IDLE_INTERVAL = 33;    // ms between frames when only the wave is running
 
+    var RIPPLE_SPEED = 780;    // px/s the click front travels
+    var RIPPLE_BAND = 74;      // px half-width of the front
+    var RIPPLE_KICK = 9;       // px a tick is shoved outward at the peak
+    var RIPPLE_MAX = 4;        // concurrent fronts before the oldest is dropped
+
     /* --- palette, read from the theme's own tokens ------------------------ */
 
     var css = getComputedStyle(document.documentElement);
@@ -63,6 +68,7 @@
     var scrollPhase = 0;
     var reduce = reduceQuery.matches;
     var ticks = [];
+    var ripples = [];
     var raf = null;
     var lastDraw = 0;
 
@@ -88,7 +94,9 @@
                     y: r * step + step / 2,
                     base: base,
                     a: base,
-                    boost: 0
+                    boost: 0,
+                    ox: 0,
+                    oy: 0
                 });
             }
         }
@@ -110,13 +118,21 @@
 
     function draw(now) {
         var t = now / 1000;
-        var i, it;
+        var i, k, it;
         var reach2 = REACH * REACH;
+
+        for (i = ripples.length - 1; i >= 0; i--) {
+            if (t - ripples[i].t0 > ripples[i].life) ripples.splice(i, 1);
+        }
 
         for (i = 0; i < ticks.length; i++) {
             it = ticks[i];
             var target = it.base;
-            var boost = 0;
+            var ox = 0, oy = 0;
+
+            /* The strongest nearby source — pointer or one of the fronts —
+               owns the angle; a blend of several just cancels out to noise. */
+            var boost = 0, aim = 0;
 
             if (!reduce) {
                 target += Math.sin(it.x * 0.010 + it.y * 0.016 - t * 0.5 + scrollPhase) * 0.20;
@@ -128,12 +144,40 @@
                 if (d2 < reach2) {
                     var f = 1 - Math.sqrt(d2) / REACH;
                     boost = f * f;
-                    target += delta(target, Math.atan2(dy, dx) + Math.PI / 2) * boost;
+                    aim = Math.atan2(dy, dx) + Math.PI / 2;
                 }
             }
 
+            for (k = 0; k < ripples.length; k++) {
+                var rp = ripples[k];
+                var age = t - rp.t0;
+                var rx = it.x - rp.x, ry = it.y - rp.y;
+                var rd = Math.sqrt(rx * rx + ry * ry);
+
+                /* Gaussian band riding the expanding front, dimming with age. */
+                var band = (rd - age * RIPPLE_SPEED) / RIPPLE_BAND;
+                if (band < -3 || band > 3) continue;
+                var fade = 1 - age / rp.life;
+                var inf = Math.exp(-band * band) * fade * fade;
+                if (inf < 0.004) continue;
+
+                if (rd > 0.001) {
+                    ox += rx / rd * inf * RIPPLE_KICK;
+                    oy += ry / rd * inf * RIPPLE_KICK;
+                }
+                if (inf > boost) {
+                    boost = inf;
+                    aim = Math.atan2(ry, rx) + Math.PI / 2;
+                }
+            }
+
+            if (boost > 0) target += delta(target, aim) * boost;
+
             it.a += delta(it.a, target) * 0.16;
-            it.boost += (boost - it.boost) * 0.12;
+            /* Snap toward a passing front, drift back slowly once it is gone. */
+            it.boost += (boost - it.boost) * (boost > it.boost ? 0.45 : 0.10);
+            it.ox = ox;
+            it.oy = oy;
         }
 
         ctx.clearRect(0, 0, w, h);
@@ -156,11 +200,12 @@
         for (i = 0; i < ticks.length; i++) {
             it = ticks[i];
             if (it.boost <= 0.01) continue;
+            var cx = it.x + it.ox, cy = it.y + it.oy;
             var len = LEN * (1 + it.boost * 0.45);
             var gx = Math.cos(it.a) * len / 2, gy = Math.sin(it.a) * len / 2;
             ctx.beginPath();
-            ctx.moveTo(it.x - gx, it.y - gy);
-            ctx.lineTo(it.x + gx, it.y + gy);
+            ctx.moveTo(cx - gx, cy - gy);
+            ctx.lineTo(cx + gx, cy + gy);
             ctx.strokeStyle = stroke(it.boost, 0.5 + it.boost * 0.45);
             ctx.stroke();
         }
@@ -176,8 +221,9 @@
 
     function loop(now) {
         raf = window.requestAnimationFrame(loop);
-        /* Full rate under the pointer; the ambient wave alone does not need 60fps. */
-        if (!active && now - lastDraw < IDLE_INTERVAL) return;
+        /* Full rate under the pointer and while a front is travelling; the
+           ambient wave alone does not need 60fps. */
+        if (!active && !ripples.length && now - lastDraw < IDLE_INTERVAL) return;
         lastDraw = now;
         draw(now);
     }
@@ -207,6 +253,21 @@
 
     window.addEventListener('pointerout', function (e) {
         if (!e.relatedTarget) active = false;
+    }, { passive: true });
+
+    /* Primary press only — a right-click is opening a menu, not throwing a
+       stone in the pond. The front has to clear the far corner, so its life
+       comes from the diagonal rather than a fixed duration. */
+    window.addEventListener('pointerdown', function (e) {
+        if (reduce || (e.button !== undefined && e.button !== 0)) return;
+        if (ripples.length >= RIPPLE_MAX) ripples.shift();
+        ripples.push({
+            x: e.clientX,
+            y: e.clientY,
+            t0: performance.now() / 1000,
+            life: (Math.sqrt(w * w + h * h) + RIPPLE_BAND * 3) / RIPPLE_SPEED
+        });
+        start();
     }, { passive: true });
 
     window.addEventListener('blur', function () { active = false; });
